@@ -29,7 +29,7 @@ public class Main {
                 FileOutputStream propertiesOutputStream = new FileOutputStream(propertiesFile);
                 properties.setProperty("token", "");
                 properties.setProperty("prefix", "!");
-                properties.store(propertiesOutputStream, "Refferr to the README file for more information");
+                properties.store(propertiesOutputStream, "Refer to the README file for more information");
             } catch (IOException ex) {
                 throw new IOError(ex);
             }
