@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'com.github.ya64'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'm2-dv8tion'
+        url 'https://m2.dv8tion.net/releases'
+    }
+}
+
+dependencies {
+    implementation("net.dv8tion:JDA:4.3.0_288") {
+        exclude module: 'opus-java'
+    }
+}
+
+task createFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'com.github.ya64.IrwinBot.Main'
+    }
+    baseName = 'IrwinBot'
+    archiveClassifier = "all"
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
