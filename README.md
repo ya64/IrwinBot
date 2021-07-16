@@ -11,7 +11,7 @@ Irwin, yo! This file has application specific instructions on how to install Irw
 ```
 #Refer to the README file for more information
 #Fri Jul 02 09:56:39 PDT 2021
-prefix=\!
+prefix=\+
 token=
 ```
 
