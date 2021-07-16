@@ -25,12 +25,13 @@ public class Listener extends ListenerAdapter {
 
         if (command.toLowerCase().startsWith("help")) {
             m.getChannel().sendMessageEmbeds((new EmbedBuilder())
-                    .setTitle("Help")
-                    .addField(Main.getPrefix() + "help", "Shows this message", true)
-                    .addField(Main.getPrefix() + "irwin", "Gets a random irwin", true)
+                    .setTitle("Command List")
+                    .addField(Main.getPrefix() + "help", "Displays the list of commands you can use yo", true)
+                    .addField(Main.getPrefix() + "irwin", "Shows a random irwin", true)
                     .addField(Main.getPrefix() + "irwin [number]", "Gets an irwin by its number", true)
-                    .addField(Main.getPrefix() + "backyardigans", "The Backyardirwins story", true)
-                    .addField(Main.getPrefix() + "github", "The source for this bot", true)
+                    .addField(Main.getPrefix() + "backyardirwins", "Sends a link to The Backyardirwins story on Wattpad", true)
+                    .addField(Main.getPrefix() + "kermwinstale", "Sends a link to the Kermwin's Tale story on Wattpad", true)
+                    .addField(Main.getPrefix() + "github", "The source code for this bot", true)
                     .addField(Main.getPrefix() + "ping", "Gets the ping", true)
                     .setFooter("Don't do " + Main.getPrefix() + "mandy")
                     .build()
@@ -39,13 +40,13 @@ public class Listener extends ListenerAdapter {
             if (params.length == 1 || getNum(params[1]) == -1) {
                 irwin = IrwinLibrary.getIrwin();
                 if (irwin == null) {
-                    m.getChannel().sendMessage("Oops, something went wrong with getting an irwin :(").queue();
+                    m.getChannel().sendMessage("Oops, something went wrong with getting an irwin yo :(").queue();
                     return;
                 }
             } else {
                 irwin = IrwinLibrary.getIrwin(getNum(params[1]));
                 if (irwin == null) {
-                    m.getChannel().sendMessage("Oops, seems like we couldn't find that Irwin :(").queue();
+                    m.getChannel().sendMessage("Oops, seems like we couldn't find that Irwin, sorry yo :(").queue();
                     return;
                 }
             }
@@ -60,6 +61,8 @@ public class Listener extends ListenerAdapter {
             m.getChannel().sendMessage("Poggers!").queue();
         } else if (command.toLowerCase().startsWith("backyard")) {
             m.getChannel().sendMessage("https://www.wattpad.com/story/275145195-the-backyardirwins").queue();
+        } else if (command.toLowerCase().startsWith("kermwins")) {
+            m.getChannel().sendMessage("https://www.wattpad.com/story/277598881-kermwin%27s-tale").queue();
         } else if (command.toLowerCase().startsWith("github")) {
             m.getChannel().sendMessage("https://github.com/ya64/IrwinBot").queue();
         } else if (command.toLowerCase().startsWith("ping")) {
