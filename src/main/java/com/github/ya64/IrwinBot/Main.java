@@ -11,7 +11,7 @@ import java.util.Properties;
  * The bot of irwins
  */
 public class Main {
-    /** The prefix of the bot, defaults to '!' */
+    /** The prefix of the bot, defaults to '+' */
     private static String prefix;
     private static JDA jda;
 
@@ -22,13 +22,13 @@ public class Main {
         try (FileInputStream propertiesInputStream = new FileInputStream(propertiesFile)) {
             properties.load(propertiesInputStream);
             token = properties.getProperty("token");
-            prefix = properties.getProperty("prefix", "!");
+            prefix = properties.getProperty("prefix", "+");
         } catch (FileNotFoundException e) {
             try {
                 propertiesFile.createNewFile();
                 FileOutputStream propertiesOutputStream = new FileOutputStream(propertiesFile);
                 properties.setProperty("token", "");
-                properties.setProperty("prefix", "!");
+                properties.setProperty("prefix", "+");
                 properties.store(propertiesOutputStream, "Refer to the README file for more information");
             } catch (IOException ex) {
                 throw new IOError(ex);
@@ -38,14 +38,14 @@ public class Main {
         }
 
         if (token == null) {
-            System.out.println("Please put a token into configuration.properties and try again");
+            System.out.println("Please put a token into configuration.properties and try again yo");
             System.exit(0);
         }
 
-        System.out.println("Indexing the Irwins (this might take a while if there's a lot of them) . . .");
+        System.out.println("Indexing the Irwins (this might take a while if there's a lot of them yo) . . .");
         IrwinLibrary.init();
 
-        System.out.println("Logging into Discord (Don't worry about any SLF4J Errors) . . .");
+        System.out.println("Logging into Discord (Don't worry about any SLF4J Errors yo) . . .");
         try {
             jda = JDABuilder.createDefault(token)
                     .addEventListeners(new Listener())
@@ -57,7 +57,7 @@ public class Main {
             e.printStackTrace();
         }
         (new Thread(new Terminal())).start();
-        System.out.println("The bots up and ready to go, yo! You'd need to restart the bot after you add/delete Irwins.\nIt's also reccomended to back up all irwins in a seperate folder, just in case.\nEnter help for a list of commands you can run from the terminal.");
+        System.out.println("I am up ready to go, yo! I need to be restarted after you add/delete Irwins.\nIt's also reccomended to back up all irwins in a seperate folder, just in case yo.\nEnter help for a list of commands you can run from the terminal yo.");
     }
 
     /**
