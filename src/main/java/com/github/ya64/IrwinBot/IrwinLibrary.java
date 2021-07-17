@@ -49,7 +49,6 @@ public class IrwinLibrary {
                 }
             }
         } catch (NullPointerException e) {
-            e.printStackTrace();
             return null;
         }
 
