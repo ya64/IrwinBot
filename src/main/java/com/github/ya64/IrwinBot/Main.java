@@ -4,11 +4,17 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.JDA;
 
 import javax.security.auth.login.LoginException;
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.Properties;
 
 /**
- * The bot of irwins
+ * The grand bot of all the irwins!
+ * @version 1.1.0
  */
 public class Main {
     /** The prefix of the bot, defaults to '+' */
@@ -34,7 +40,7 @@ public class Main {
                 throw new IOError(ex);
             }
         } catch (IOException ex) {
-        throw new IOError(ex);
+            throw new IOError(ex);
         }
 
         if (token == null) {
@@ -52,7 +58,7 @@ public class Main {
                     .build()
                     .awaitReady();
         } catch (LoginException e) {
-            System.out.println("Error logging into Discord. Please check to make sure your tokens correct and try again.");
+            System.out.println("Error logging into Discord. Please check to make sure your tokens correct and try again yo.");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
