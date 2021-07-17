@@ -92,7 +92,6 @@ public class Listener extends ListenerAdapter {
         try {
             return Integer.parseInt(param);
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
