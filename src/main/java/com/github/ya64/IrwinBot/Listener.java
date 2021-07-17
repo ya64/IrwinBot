@@ -6,9 +6,6 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class Listener extends ListenerAdapter {
     @Override
@@ -52,16 +49,16 @@ public class Listener extends ListenerAdapter {
             }
         } else if (command.toLowerCase().startsWith("mandy")) {
             int amountOfY = (int) (Math.random() * 9) + 1;
-            StringBuilder y = new StringBuilder();
+            StringBuilder anExcessiveAmountOfYs = new StringBuilder();
             for (int i = 0; i < amountOfY; i++) {
-                y.append("y");
+                anExcessiveAmountOfYs.append("y");
             }
-            m.getChannel().sendMessage("He" + y.toString() + " Mandy!").queue();
+            m.getChannel().sendMessage("He" + anExcessiveAmountOfYs + " Mandy!").queue();
         } else if (command.toLowerCase().startsWith("pog")) {
             m.getChannel().sendMessage("Poggers!").queue();
         } else if (command.toLowerCase().startsWith("backyard")) {
             m.getChannel().sendMessage("https://www.wattpad.com/story/275145195-the-backyardirwins").queue();
-        } else if (command.toLowerCase().startsWith("kermwins")) {
+        } else if (command.toLowerCase().startsWith("kermwin")) {
             m.getChannel().sendMessage("https://www.wattpad.com/story/277598881-kermwin%27s-tale").queue();
         } else if (command.toLowerCase().startsWith("github")) {
             m.getChannel().sendMessage("https://github.com/ya64/IrwinBot").queue();
@@ -75,19 +72,27 @@ public class Listener extends ListenerAdapter {
             return;
         }
 
+        String parsedFileName = irwin.getFileName().replaceAll(" ", "_").substring(1);
+
         m.getChannel()
-         .sendFile(new File("irwins" + File.separator + irwin.getFileName()), irwin.getFileName())
+         .sendFile(new File("irwins" + File.separator + irwin.getFileName()), parsedFileName)
          .setEmbeds((new EmbedBuilder())
                  .setTitle(irwin.getNumber() + " - " + irwin.getName())
-                 .setImage("attachment://" + irwin.getFileName())
+                 .setImage("attachment://" + parsedFileName)
                  .build()
          ).queue();
     }
 
+    /**
+     * Gets a number from a command parameter
+     * @param param The parameter
+     * @return The number, or -1 if the parameter was not a valid number
+     */
     private int getNum(String param) {
         try {
             return Integer.parseInt(param);
         } catch (Exception e) {
+            e.printStackTrace();
             return -1;
         }
     }
