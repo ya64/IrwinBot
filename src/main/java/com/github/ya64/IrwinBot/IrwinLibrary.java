@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class IrwinLibrary {
-    private static List<Integer> irwinNums;
+    private static volatile List<Integer> irwinNums;
     private static final File irwinDir = new File("irwins");
 
     /**
@@ -23,7 +23,7 @@ public class IrwinLibrary {
             System.exit(0);
         }
 
-        irwinNums = new ArrayList<>(Objects.requireNonNull(irwinDir.list()).length);
+        irwinNums = new ArrayList<>();
         for (String name : Objects.requireNonNull(irwinDir.list())) {
             int num = Irwin.getNumberFromName(name.split("_")[0]);
             if (num != -1) {
@@ -49,6 +49,7 @@ public class IrwinLibrary {
                 }
             }
         } catch (NullPointerException e) {
+            e.printStackTrace();
             return null;
         }
 
