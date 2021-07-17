@@ -9,10 +9,10 @@ public class Irwin {
     /** The number of the Irwin, which must be at the beggining of the file name */
     private final int number;
 
-    /** The file name of the irwin */
+    /** The file name of the Irwin */
     private final String fileName;
 
-    /** The parsed name of the irwin */
+    /** The parsed name of the Irwin */
     private final String name;
 
     public Irwin(String fileName) {
@@ -52,26 +52,32 @@ public class Irwin {
      */
     public static int getNumberFromName(String name) {
         int number;
-        String numStr = name.split("_")[0];
+        String numStr = name.substring(1, name.indexOf(" "));
+
         try {
             number = Integer.parseInt(numStr);
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             number = -1;
         }
+
         return number;
     }
 
     /**
-     * Gets the actual name of the irwin from the file name
+     * Gets the actual name of the Irwin from the file name
      * @param fileName The name of the image file
-     * @return The parsed name
+     * @return The parsed name, or "???" if the name could not be parsed
      */
     public static String parseName(String fileName) {
         StringBuilder parsedIrwinNameBuilder = new StringBuilder();
+        int extensionIndex = fileName.lastIndexOf(".");
+        int nameStartIndex = fileName.indexOf(" ") + 1;
+        if (extensionIndex == -1 || nameStartIndex == 0) {
+            return "???";
+        }
+
         Arrays.stream(fileName
-                .substring(0, fileName.lastIndexOf("."))
-                .replaceFirst("\\d+", "")
-                .replace("_", " ")
+                .substring(nameStartIndex, extensionIndex)
                 .replaceAll("[hH][dD]", "")
                 .replaceAll(" +", " ")
                 .trim()
