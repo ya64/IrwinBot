@@ -51,16 +51,11 @@ public class Irwin {
      * @return The number of the Irwin
      */
     public static int getNumberFromName(String name) {
-        int number;
-        String numStr = name.substring(1, name.indexOf(" "));
-
         try {
-            number = Integer.parseInt(numStr);
+            return Integer.parseInt(name.substring(1, name.indexOf(" ")));
         } catch (Exception e) {
-            number = -1;
+            return -1;
         }
-
-        return number;
     }
 
     /**
