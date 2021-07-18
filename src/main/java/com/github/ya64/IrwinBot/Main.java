@@ -14,7 +14,7 @@ import java.util.Properties;
 
 /**
  * The grand bot of all the irwins!
- * @version 1.1.0
+ * @version 1.1.1
  */
 public class Main {
     /** The prefix of the bot, defaults to '+' */
