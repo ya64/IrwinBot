@@ -15,8 +15,8 @@ prefix=\+
 token=
 ```
 
-If you haven't already, you'd need to create a bot account on discord and paste the token into this file. The token is bassically the username/password for the bot, so you shouldn't share it with anyone. You can read a guide on how to create bot accounts [here](CREATEABOTACCOUNT.md)
+If you haven't already, you'd need to create a bot account on discord and paste the token into this file. The token is bassically the username/password for the bot, so you shouldn't share it with anyone. 
 
 6. Rerun the bot. A new folder will be created called `irwins` in your irwinbot folder. Copy and paste the irwins you want the bot to access there! Please note that it's reccomended to keep a copy of all irwins in a seperate folder, just in case.
 
-7. Rerun the bot one last time and invite it to your server, reffer to the [CREATEABOTACCOUNT.md](CREATEABOTACCOUNT.md) which has instructions on how to do so.
+7. Rerun the bot one last time and invite it to your server
